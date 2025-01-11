@@ -29,10 +29,10 @@ graph TD;
     shared --> json[json]
     json --> hello_world[hello_world.json]
     
-    jvm --> build_jvm[build]
     jvm --> lib_jvm[lib]
     jvm --> src_jvm[src]
     jvm --> build_kts[build.gradle.kts]
+    jvm --> settings_kts[settings.gradle.kts]
 
     src_jvm --> main_jvm[main]
     src_jvm --> test_jvm[test]
