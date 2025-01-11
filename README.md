@@ -23,7 +23,6 @@ Here's how the project is organized:
 graph TD;
     root[xplat-helloworld-kit]
     root --> jvm[jvm]
-    root --> gradle[gradle]
     root --> shared[shared]
     root --> swift[Swift]
     
@@ -33,8 +32,6 @@ graph TD;
     swift --> sources[Sources]
     swift --> tests[Tests]
     swift --> package[Package.swift]
-    
-    gradle --> gradle_files[gradle.properties, gradlew, settings.gradle.kts]
 ```
 
 ---
