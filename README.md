@@ -29,18 +29,18 @@ graph TD;
     shared --> json[json]
     json --> hello_world[hello_world.json]
     
-    jvm --> lib_jvm[lib]
-    jvm --> src_jvm[src]
-    jvm --> build_kts[build.gradle.kts]
+    jvm --> hellokit[hellokit]
     jvm --> settings_kts[settings.gradle.kts]
+    hellokit --> src_jvm[src]
+    hellokit --> build_kts[build.gradle.kts]
 
     src_jvm --> main_jvm[main]
     src_jvm --> test_jvm[test]
     
-    main_jvm --> kotlin_main[kotlin]
-    main_jvm --> resources[resources]
     
     swift --> sources[Sources]
+    sources --> hello_kit[HelloKit]
+    sources --> hello_kit_exe[HelloKitExecutable]
     swift --> tests[Tests]
     swift --> package[Package.swift]
 ```

@@ -12,4 +12,4 @@ plugins {
 }
 
 rootProject.name = "jvm-hello-kit"
-include("lib")
+include("hellokit")
