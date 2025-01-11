@@ -38,8 +38,6 @@ graph TD;
     src_jvm --> test_jvm[test]
     
     main_jvm --> kotlin_main[kotlin]
-    kotlin_main --> org_example[org.example]
-    org_example --> library[Library.kt]
     main_jvm --> resources[resources]
     
     swift --> sources[Sources]
