@@ -29,6 +29,19 @@ graph TD;
     shared --> json[json]
     json --> hello_world[hello_world.json]
     
+    jvm --> build_jvm[build]
+    jvm --> lib_jvm[lib]
+    jvm --> src_jvm[src]
+    jvm --> build_kts[build.gradle.kts]
+
+    src_jvm --> main_jvm[main]
+    src_jvm --> test_jvm[test]
+    
+    main_jvm --> kotlin_main[kotlin]
+    kotlin_main --> org_example[org.example]
+    org_example --> library[Library.kt]
+    main_jvm --> resources[resources]
+    
     swift --> sources[Sources]
     swift --> tests[Tests]
     swift --> package[Package.swift]
