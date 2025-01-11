@@ -19,6 +19,17 @@ repositories {
     mavenCentral()
 }
 
+val json = file("../../shared/json/hello_world.json")
+println(json.absolutePath)
+
+// Instead of adding the file as a resource directory, copy it into the resources folder during build
+tasks.processResources {
+    from(json) {
+        // Optionally rename or place it in a subfolder inside resources
+        into("")
+    }
+}
+
 dependencies {
     // This dependency is exported to consumers, that is to say found on their compile classpath.
     api(libs.commons.math3)
@@ -43,3 +54,4 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
+

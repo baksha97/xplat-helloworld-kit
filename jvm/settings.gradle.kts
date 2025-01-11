@@ -11,5 +11,5 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
 }
 
-rootProject.name = "jvm-observability-kit"
+rootProject.name = "jvm-hello-kit"
 include("lib")
