@@ -9,28 +9,23 @@ let package = Package(
     // Products define the executables and libraries a package produces, making them visible to other packages.
     .library(
       name: "HelloKit",
-      targets: ["HelloKit"]),
+      targets: ["HelloKit"]
+    ),
   ],
   dependencies: [
-    .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.20.0")
+    .package(name: "CLib", path: "../shared/clib")
   ],
   targets: [
     // Targets are the basic building blocks of a package, defining a module or a test suite.
     // Targets can depend on other targets in this package and products from dependencies.
     .executableTarget(
       name: "HelloKitExecutable",
-      dependencies: ["HelloKit"]
+      dependencies: ["HelloKit", "CLib"]
     ),
     .target(
       name: "HelloKit",
-      dependencies: [
-        .product(name: "SwiftProtobuf", package: "swift-protobuf"),
-      ],
       resources: [
         .copy("../../../shared/json/hello_world.json")
-      ],
-      plugins: [
-        .plugin(name: "SwiftProtobufPlugin", package: "swift-protobuf"),
       ]
     ),
     .testTarget(

@@ -1,0 +1,1 @@
+extern const int hello_world_kit_const = 13;
