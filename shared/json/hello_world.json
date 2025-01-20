@@ -1,3 +1,27 @@
-{
-    "message": "Hello, World!"
-}
+[
+    {
+        "_name": "default",
+        "message": "Hello, wonderful world!",
+        "multiplier": 42
+    },
+    {
+        "_name": "greeting",
+        "message": "Greetings from protobuf land",
+        "multiplier": 7
+    },
+    {
+        "_name": "random",
+        "message": "Welcome to the future",
+        "multiplier": 365
+    },
+    {
+        "_name": "fun",
+        "message": "Random messages are fun",
+        "multiplier": 123
+    },
+    {
+        "_name": "rock",
+        "message": "Protocol buffers rock",
+        "multiplier": 256
+    }
+]

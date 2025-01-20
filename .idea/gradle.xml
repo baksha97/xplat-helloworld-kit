@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/jvm/buildSrc" name="buildSrc">
+                <projects>
+                  <project path="$PROJECT_DIR$/jvm/buildSrc" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
         <option name="externalProjectPath" value="$PROJECT_DIR$/jvm" />
         <option name="gradleJvm" value="openjdk-23" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/jvm" />
+            <option value="$PROJECT_DIR$/jvm/buildSrc" />
             <option value="$PROJECT_DIR$/jvm/hellokit" />
           </set>
         </option>
