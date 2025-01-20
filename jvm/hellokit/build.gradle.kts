@@ -22,6 +22,8 @@ repositories {
 
 val json = file("../../shared/json/hello_world.json")
 println(json.absolutePath)
+val proto = file("../../shared/proto/hello.proto")
+println(proto.absolutePath)
 
 // Instead of adding the file as a resource directory, copy it into the resources folder during build
 tasks.processResources {
@@ -39,6 +41,18 @@ dependencies {
     implementation(libs.guava)
     implementation("com.google.protobuf:protobuf-kotlin:4.29.3")
     implementation("com.google.protobuf:protobuf-java:4.29.3")
+    implementation("com.google.protobuf:protobuf-java-util:4.29.3")
+    implementation("com.google.code.gson:gson:2.11.0")
+}
+
+// Define the task
+tasks.compileKotlin {
+    dependsOn("generateSealedClass")
+}
+tasks.register<GenerateSealedClassTask>("generateSealedClass") {
+    protoFile = proto
+    jsonFile = json
+    outputDir.set(layout.projectDirectory.dir("src/main/kotlin"))
 }
 
 testing {
@@ -63,28 +77,16 @@ sourceSets {
     main {
 
         proto {
-            // In addition to the default 'src/main/proto'
-//            srcDir 'src/main/protobuf'
-//            srcDir 'src/main/protocolbuffers'
             srcDir("src/main/protocol")
             srcDir("src/main/protocolbuffers")
             srcDir("src/test/protocol")
             srcDir("src/test/protocolbuffers")
+            srcDir("../../shared/proto")
             // In addition to the default '**/*.proto' (use with caution).
             // Using an extension other than 'proto' is NOT recommended,
             // because when proto files are published along with class files, we can
             // only tell the type of file from its extension.
 //            include '**/*.protodevel'
-        }
-        java {
-//            ...
-        }
-    }
-    test {
-        proto {
-            srcDir("src/test/protocolbuffers")
-            // In addition to the default 'src/test/proto'
-//            srcDir ''
         }
     }
 }

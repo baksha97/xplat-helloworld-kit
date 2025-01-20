@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_package = "org.example.protos";
+option java_multiple_files = true;
+
+message Hello {
+    string _name = 1;
+    string message = 2;
+    int32 multiplier = 3;
+}
+
+message HelloList {
+  repeated Hello items = 1;
+}
