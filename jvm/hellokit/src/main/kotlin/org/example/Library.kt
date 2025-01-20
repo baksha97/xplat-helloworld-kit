@@ -3,6 +3,8 @@
  */
 package org.example
 
+import org.example.protos.Hello
+
 class Library {
     fun someLibraryMethod(): Boolean {
         return true
@@ -16,10 +18,19 @@ class MyApp {
             ?: throw IllegalArgumentException("Resource not found!")
         return stream.bufferedReader(Charsets.UTF_8).use { it.readText() }
     }
+
+    fun createHelloProto(): Hello = Hello
+        .newBuilder()
+        .setMultiplier(1)
+        .setMessage("Hello Travis")
+        .build()
 }
 
 fun main() {
     val app = MyApp()
     val jsonContent = app.readJsonResource()
     println("JSON Content:\n$jsonContent")
+
+    val protoModel = app.createHelloProto()
+    println(protoModel)
 }

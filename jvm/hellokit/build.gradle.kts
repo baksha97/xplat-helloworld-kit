@@ -9,7 +9,7 @@
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     alias(libs.plugins.kotlin.jvm)
-
+    alias(libs.plugins.protobuf)
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
 }
@@ -17,6 +17,7 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+    gradlePluginPortal()
 }
 
 val json = file("../../shared/json/hello_world.json")
@@ -36,6 +37,8 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation(libs.guava)
+    implementation("com.google.protobuf:protobuf-kotlin:4.29.3")
+    implementation("com.google.protobuf:protobuf-java:4.29.3")
 }
 
 testing {
@@ -55,3 +58,33 @@ java {
     }
 }
 
+sourceSets {
+
+    main {
+
+        proto {
+            // In addition to the default 'src/main/proto'
+//            srcDir 'src/main/protobuf'
+//            srcDir 'src/main/protocolbuffers'
+            srcDir("src/main/protocol")
+            srcDir("src/main/protocolbuffers")
+            srcDir("src/test/protocol")
+            srcDir("src/test/protocolbuffers")
+            // In addition to the default '**/*.proto' (use with caution).
+            // Using an extension other than 'proto' is NOT recommended,
+            // because when proto files are published along with class files, we can
+            // only tell the type of file from its extension.
+//            include '**/*.protodevel'
+        }
+        java {
+//            ...
+        }
+    }
+    test {
+        proto {
+            srcDir("src/test/protocolbuffers")
+            // In addition to the default 'src/test/proto'
+//            srcDir ''
+        }
+    }
+}
