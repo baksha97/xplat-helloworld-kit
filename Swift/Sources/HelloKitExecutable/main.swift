@@ -1,7 +1,7 @@
 import HelloKit
-import CLib
-
+//import CLib
+//print(hello_world_kit_const)
 let result = HelloKitLoader.loadRawHelloWorldJSON() ?? "An error occured getting the shared json."
 print(result)
 
-print(hello_world_kit_const)
+//print(HelloMessageTyoe.)
